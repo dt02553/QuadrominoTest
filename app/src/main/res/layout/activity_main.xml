@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_game_button_text"
+        android:text="Play"
         android:id="@+id/new_game_button"
         android:layout_marginBottom="20dp"
         android:textSize="20dp"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="@string/leaderboard_button_text"
+        android:text="Leaderboards"
         android:id="@+id/leaderboard_button"
         android:textSize="20dp"
         android:layout_below="@+id/new_game_button"
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings_button_text"
+        android:text="Settings"
         android:id="@+id/settings_button"
         android:layout_marginBottom="20dp"
         android:textSize="20dp"
@@ -51,7 +51,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/info_button_text"
+        android:text="About"
         android:id="@+id/info_button"
         android:textSize="20dp"
         android:layout_below="@+id/settings_button"
