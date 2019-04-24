@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
     android:configChanges="orientation|screenSize"
-    android:background="#ff72abff">
+    android:background="@drawable/quadromino_back">
 
     <ImageView
         android:layout_width="wrap_content"
