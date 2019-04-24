@@ -1,6 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:configChanges="orientation|screenSize"
+    android:background="#ff72abff">
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logoImageView"
+        android:src="@drawable/quadromino"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/welcome_string"
+        android:id="@+id/welcomeTextView"
+        android:textSize="30dp"
+        android:layout_below="@+id/logoImageView"
+        android:layout_alignLeft="@+id/new_game_button"
+        android:layout_alignStart="@+id/new_game_button" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/nameEditText"
+        android:layout_below="@+id/welcomeTextView"
+        android:layout_centerHorizontal="true"
+        android:maxLength="30" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_game_button_text"
+        android:id="@+id/new_game_button"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/nameEditText"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/leaderboard_button_text"
+        android:id="@+id/leaderboard_button"
+        android:textSize="20dp"
+        android:layout_below="@+id/new_game_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_button_text"
+        android:id="@+id/settings_button"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/leaderboard_button"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_button_text"
+        android:id="@+id/info_button"
+        android:textSize="20dp"
+        android:layout_below="@+id/settings_button"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,6 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".GameActivity"
+    android:background="#ff72abff">
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/game_board"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/game_score_textview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/game_score_string"
+        android:id="@+id/game_score_textview"
+        android:longClickable="false"
+        android:textIsSelectable="false"
+        android:clickable="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/game_over_textview_string"
+        android:id="@+id/game_over_textview"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        android:textColor="#ffffffff"
+        android:longClickable="false"
+        android:clickable="false"
+        android:textSize="30sp"
+        android:textIsSelectable="false"
+        android:background="#ff2b2b2b" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/game_over_textview_string2"
+        android:id="@+id/game_over_textview2"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        android:textColor="#ffffffff"
+        android:longClickable="false"
+        android:clickable="false"
+        android:textIsSelectable="false"
+        android:layout_below="@+id/game_over_textview"
+        android:textSize="30sp"
+        android:background="#ff2b2b2b"
+        android:autoText="true" />
+</RelativeLayout>

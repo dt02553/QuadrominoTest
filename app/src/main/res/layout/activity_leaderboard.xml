@@ -1,6 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimensions/activity_horizontal_margin"
+    android:paddingRight="@dimensions/activity_horizontal_margin"
+    android:paddingTop="@dimensions/activity_vertical_margin"
+    android:paddingBottom="@dimensions/activity_vertical_margin"
+    tools:context=".LeaderboardActivity"
+    android:background="#ff72abff">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/leaderboard_string"
+        android:id="@+id/leaderboardTextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView_leaderboard"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/leaderboardTextView"
+        android:layout_above="@+id/set_properties_leaderboard_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff6699e5"
+        android:text="@string/set_properties_leaderboard_button_text"
+        android:id="@+id/set_properties_leaderboard_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -25,7 +25,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminostorm.MainActivity" />
+                android:value="com.example.quadraminotest.MainActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"
@@ -34,7 +34,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminostorm.MainActivity" />
+                android:value="com.example.quadraminotest.MainActivity" />
         </activity>
 
         <activity
@@ -44,7 +44,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminostorm.MainActivity" />
+                android:value="com.example.quadraminotest.MainActivity" />
         </activity>
         <activity
             android:name=".LeaderboardActivity"
@@ -53,7 +53,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminostorm.MainActivity" />
+                android:value="com.example.quadraminotest.MainActivity" />
         </activity>
         <activity
             android:name=".GameActivity"
@@ -63,7 +63,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminostorm.MainActivity" />
+                android:value="com.example.quadraminotest.MainActivity" />
         </activity>
 
         <provider
