@@ -473,7 +473,7 @@ public class GameActivity extends Activity implements GestureDetector.OnGestureL
 
     private void InsertScore() {
         ContentValues values = new ContentValues();
-        //values.put(LeaderboardDB.KEY_NAME, MainActivity.playerName);
+        values.put(LeaderboardDB.KEY_NAME, MainActivity.username);
         values.put(LeaderboardDB.KEY_SCORE, Integer.toString(score));
         values.put(LeaderboardDB.KEY_DIFFICULTY, difficulty);
         values.put(LeaderboardDB.KEY_NUMROWS, Integer.toString(NUM_ROWS - 6));

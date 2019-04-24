@@ -9,7 +9,6 @@
     <string name="leaderboard_string">Leaderboard</string>
     <string name="info_string">Game Information</string>
     <string name="game_score_string">Score: 0</string>
-    <string name="welcome_string">Welcome,</string>
     <string name="settings_button_text">Settings</string>
     <string name="set_properties_leaderboard_button_text">Leaderboard filters</string>
     <string name="game_over_textview_string">GAME OVER</string>

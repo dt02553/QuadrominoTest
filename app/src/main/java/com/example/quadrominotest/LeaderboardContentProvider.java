@@ -11,10 +11,10 @@ public class LeaderboardContentProvider extends ContentProvider {
 
     private LeaderboardDBHelper dbHelper;
 
-    private static final String AUTHORITY = "com.indysoft.amazingtetris.contentprovider";
+    private static final String AUTHORITY = "com.example.quadrominotest.contentprovider";
 
     public static final Uri CONTENT_URI =
-            Uri.parse("content://" + AUTHORITY + "/highscores");
+            Uri.parse("content://" + AUTHORITY + "/leaderboard");
 
     @Override
     public boolean onCreate() {
