@@ -33,7 +33,14 @@ public class MainActivity extends Activity {
         SharedPreferences settings = getSharedPreferences("Preferences", 0);
 
         final Button newGameButton = (Button) findViewById(R.id.new_game_button);
+        newGameButton.setOnClickListener(
+                new View.OnClickListener() {
 
+                    @Override
+                    public void onClick(View view) {
+                            MainActivity.this.startActivity(new Intent(MainActivity.this, GameActivity.class));
+                    }
+                });
 
         Button leaderboardButton = (Button) findViewById(R.id.leaderboard_button);
         leaderboardButton.setOnClickListener(
