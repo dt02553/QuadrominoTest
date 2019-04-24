@@ -1,5 +1,6 @@
 package com.example.quadrominotest;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -12,9 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.quadraminotest.R;
 
-public class MainActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class MainActivity {
         SharedPreferences settings = getSharedPreferences("Preferences", 0);
 
         final Button newGameButton = (Button) findViewById(R.id.new_game_button);
+
 
         Button leaderboardButton = (Button) findViewById(R.id.leaderboard_button);
         leaderboardButton.setOnClickListener(
@@ -64,6 +65,7 @@ public class MainActivity {
                     }
                 });
 
+        EditText editText = (EditText) findViewById(R.id.nameEditText);
     }
 
     @Override
@@ -82,13 +84,12 @@ public class MainActivity {
 
         SharedPreferences settings = getSharedPreferences("Preferences", 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("playerName", playerName);
-        editor.commit();
+        //editor.putString("playerName", playerName);
+       //editor.commit();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
-
 }

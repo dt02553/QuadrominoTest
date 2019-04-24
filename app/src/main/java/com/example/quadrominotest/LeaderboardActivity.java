@@ -1,4 +1,4 @@
-package com.example.quadraminotest;
+package com.example.quadrominotest;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -72,8 +71,8 @@ public class LeaderboardActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
-        list = (ListView) findViewById(R.id.listView_highscores);
-        Button setPropertiesButton = (Button) findViewById(R.id.set_properties_highscores_button);
+        list = (ListView) findViewById(R.id.listView_leaderboard);
+        Button setPropertiesButton = (Button) findViewById(R.id.set_properties_leaderboard_button);
         setPropertiesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,8 +81,8 @@ public class LeaderboardActivity extends Activity {
         });
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (SaveSettings.saveSettingsHighscores == 0) {
-            SaveSettings.saveSettingsHighscores = 1;
+        if (SaveSettings.saveSettingsLeaderboard == 0) {
+            SaveSettings.saveSettingsLeaderboard = 1;
             prefs.edit().putString("difficulty_preference_highscores", "Normal").apply();
             prefs.edit().putString("num_rows_preference_highscores", "20").apply();
             prefs.edit().putString("num_columns_preference_highscores", "10").apply();

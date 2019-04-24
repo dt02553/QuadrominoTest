@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.quadraminotest">
+    package="com.example.quadrominotest">
 
     <application
         android:allowBackup="true"
@@ -25,7 +25,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminotest.MainActivity" />
+                android:value="com.example.quadrominotest.MainActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"
@@ -34,7 +34,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminotest.MainActivity" />
+                android:value="com.example.quadrominotest.MainActivity" />
         </activity>
 
         <activity
@@ -44,7 +44,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminotest.MainActivity" />
+                android:value="com.example.quadrominotest.MainActivity" />
         </activity>
         <activity
             android:name=".LeaderboardActivity"
@@ -53,7 +53,7 @@
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminotest.MainActivity" />
+                android:value="com.example.quadrominotest.MainActivity" />
         </activity>
         <activity
             android:name=".GameActivity"
@@ -63,7 +63,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadraminotest.MainActivity" />
+                android:value="com.example.quadrominotest.MainActivity" />
         </activity>
 
         <provider
@@ -71,7 +71,7 @@
             android:exported="true"
             android:readPermission="true"
             android:writePermission="true"
-            android:authorities="com.indysoft.amazingtetris.contentprovider" />
+            android:authorities="com.example.quadrominotest.contentprovider"/>
     </application>
 
 </manifest>

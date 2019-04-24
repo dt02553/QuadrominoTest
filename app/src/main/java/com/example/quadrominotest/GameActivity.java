@@ -1,5 +1,6 @@
 package com.example.quadrominotest;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.Display;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -21,7 +23,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class GameActivity {
+public class GameActivity extends Activity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
     int NUM_ROWS = 26;
     int NUM_COLUMNS = 16;
@@ -471,7 +473,7 @@ public class GameActivity {
 
     private void InsertScore() {
         ContentValues values = new ContentValues();
-        values.put(LeaderboardDB.KEY_NAME, MainActivity.playerName);
+        //values.put(LeaderboardDB.KEY_NAME, MainActivity.playerName);
         values.put(LeaderboardDB.KEY_SCORE, Integer.toString(score));
         values.put(LeaderboardDB.KEY_DIFFICULTY, difficulty);
         values.put(LeaderboardDB.KEY_NUMROWS, Integer.toString(NUM_ROWS - 6));
@@ -850,5 +852,4 @@ public class GameActivity {
             }
         }
     }
-
 }

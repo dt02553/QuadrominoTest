@@ -4,10 +4,6 @@
     android:layout_height="match_parent"
     android:background="#ff72abff"
     android:orientation="vertical"
-    android:paddingBottom="@dimensions/activity_vertical_margin"
-    android:paddingLeft="@dimensions/activity_horizontal_margin"
-    android:paddingRight="@dimensions/activity_horizontal_margin"
-    android:paddingTop="@dimensions/activity_vertical_margin"
     android:weightSum="100"
     tools:context=".InfoActivity">
 

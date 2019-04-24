@@ -1,4 +1,4 @@
-package com.example.quadraminotest;
+package com.example.quadrominotest;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
