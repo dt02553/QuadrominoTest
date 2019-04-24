@@ -1,15 +1,20 @@
 package com.example.quadrominotest;
 
+import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GestureDetectorCompat;
+import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -464,5 +469,386 @@ public class GameActivity {
         textView.setText("Score: " + score);
     }
 
+    private void InsertScore() {
+        ContentValues values = new ContentValues();
+        values.put(LeaderboardDB.KEY_NAME, MainActivity.playerName);
+        values.put(LeaderboardDB.KEY_SCORE, Integer.toString(score));
+        values.put(LeaderboardDB.KEY_DIFFICULTY, difficulty);
+        values.put(LeaderboardDB.KEY_NUMROWS, Integer.toString(NUM_ROWS - 6));
+        values.put(LeaderboardDB.KEY_NUMCOLUMNS, Integer.toString(NUM_COLUMNS - 6));
+        values.put(LeaderboardDB.KEY_SPEED, speed);
+
+        Uri uri = getContentResolver().insert(LeaderboardContentProvider.CONTENT_URI, values);
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            if (!gameInProgress) {
+                return;
+            }
+            if (gamePaused) {
+                PaintMatrix();
+                if (fastSpeedState)
+                    handler.postDelayed(this, SPEED_FAST);
+                else
+                    handler.postDelayed(this, SPEED_NORMAL);
+                return;
+            }
+
+            boolean moved = MoveShape(DOWN_DIRECTION, currentShape);
+
+            if (!moved) {
+                int ind, jnd, i, j;
+                for (ind = 1, i = currentShape.x; ind <= 4; ++ind, ++i) {
+                    for (jnd = 1, j = currentShape.y; jnd <= 4; ++jnd, ++j) {
+                        if (currentShape.mat[ind][jnd].getState() == 1) {
+                            gameMatrix[i][j].setBehavior(BoardCell.BEHAVIOR_IS_FIXED);
+                            currentShape.mat[ind][jnd].setBehavior(BoardCell.BEHAVIOR_IS_FIXED);
+                        }
+                    }
+                }
+                currentShapeAlive = false;
+                Check();
+                currentShapeAlive = CreateShape();
+                if (!currentShapeAlive) {
+                    gameInProgress = false;
+                    PaintMatrix();
+                    InsertScore();
+                    return;
+                }
+                PaintMatrix();
+                if (fastSpeedState) {
+                    ChangeFastSpeedState(false);
+                    return;
+                }
+            } else
+                PaintMatrix();
+
+            if (fastSpeedState)
+                handler.postDelayed(this, SPEED_FAST);
+            else
+                handler.postDelayed(this, SPEED_NORMAL);
+        }
+    };
+
+    void ChangeFastSpeedState(boolean mFastSpeedState) {
+        handler.removeCallbacks(runnable);
+        fastSpeedState = mFastSpeedState;
+        if (fastSpeedState)
+            handler.postDelayed(runnable, SPEED_FAST);
+        else
+            handler.postDelayed(runnable, SPEED_NORMAL);
+    }
+
+    void GameInit() {
+        gameMatrix = new BoardCell[NUM_ROWS][];
+        for (int i = 0; i < NUM_ROWS; ++i) {
+            gameMatrix[i] = new BoardCell[NUM_COLUMNS];
+            for (int j = 0; j < NUM_COLUMNS; ++j) {
+                gameMatrix[i][j] = new BoardCell();
+            }
+        }
+
+        for (int j = 0; j < NUM_COLUMNS; ++j) {
+            for (int i = 0; i <= 2; ++i) {
+                gameMatrix[i][j] = new BoardCell(1, Color.BLACK);
+            }
+            for (int i = NUM_ROWS - 3; i < NUM_ROWS; ++i) {
+                gameMatrix[i][j] = new BoardCell(1, Color.BLACK);
+            }
+        }
+
+        for (int i = 0; i < NUM_ROWS; ++i) {
+            for (int j = 0; j <= 2; ++j) {
+                gameMatrix[i][j] = new BoardCell(1, Color.BLACK);
+            }
+            for (int j = NUM_COLUMNS - 3; j < NUM_COLUMNS; ++j) {
+                gameMatrix[i][j] = new BoardCell(1, Color.BLACK);
+            }
+        }
+
+        for (int j = 3; j < NUM_COLUMNS - 3; ++j) {
+            gameMatrix[NUM_ROWS - 4][j] = new BoardCell(gameMatrix[NUM_ROWS - 4][j].getState(), gameMatrix[NUM_ROWS - 4][j].getColor(), BoardCell.BEHAVIOR_IS_FIXED);
+        }
+        currentShapeAlive = CreateShape();
+
+        gameInProgress = true;
+        gamePaused = false;
+
+        PaintMatrix();
+        ChangeFastSpeedState(false);
+    }
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        if (!gameInProgress) {
+            finish();
+            return true;
+        }
+        if (gamePaused || !currentShapeAlive)
+            return false;
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        float width = size.x;
+        float x = e.getX();
+        if (x <= width / 2.0) {
+            RotateLeft(currentShape);
+            PaintMatrix();
+        } else {
+            RotateRight(currentShape);
+            PaintMatrix();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        if (!gameInProgress)
+            return false;
+        try {
+            float x1 = e1.getX();
+            float y1 = e1.getY();
+
+            float x2 = e2.getX();
+            float y2 = e2.getY();
+
+            double angle = getAngle(x1, y1, x2, y2);
+
+            if (inRange(angle, 45, 135)) {
+                if (gamePaused)
+                    gamePaused = false;
+                else {
+                    gamePaused = true;
+                    PaintMatrix();
+                }
+            } else if (inRange(angle, 0, 45) || inRange(angle, 315, 360)) {
+                if (gamePaused || !currentShapeAlive)
+                    return false;
+                MoveShape(RIGHT_DIRECTION, currentShape);
+                PaintMatrix();
+            } else if (inRange(angle, 225, 315)) {
+                if (gamePaused || !currentShapeAlive)
+                    return false;
+                ChangeFastSpeedState(true);
+            } else {
+                if (gamePaused || !currentShapeAlive)
+                    return false;
+                MoveShape(LEFT_DIRECTION, currentShape);
+                PaintMatrix();
+            }
+
+        } catch (Exception e) {
+
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    public double getAngle(float x1, float y1, float x2, float y2) {
+
+        double rad = Math.atan2(y1 - y2, x2 - x1) + Math.PI;
+        return (rad * 180 / Math.PI + 180) % 360;
+    }
+
+    private boolean inRange(double angle, float init, float end) {
+        return (angle >= init) && (angle < end);
+    }
+
+    public class BoardCell {
+        public final static int BEHAVIOR_IS_FIXED = 2, BEHAVIOR_IS_FALLING = 1, BEHAVIOR_NOTHING = 0;
+        private int state, color, behavior;
+
+        public BoardCell() {
+            state = 0;
+            color = Color.BLACK;
+            behavior = BEHAVIOR_NOTHING;
+        }
+
+        public BoardCell(int state, int color) {
+            this.state = state;
+            this.color = color;
+            this.behavior = BEHAVIOR_NOTHING;
+        }
+
+        public BoardCell(int state, int color, int behavior) {
+            this.state = state;
+            this.color = color;
+            this.behavior = behavior;
+        }
+
+        public int getState() {
+            return state;
+        }
+
+        public int getColor() {
+            return color;
+        }
+
+        public int getBehavior() {
+            return behavior;
+        }
+
+        public void setState(int state) {
+            this.state = state;
+        }
+
+        public void setColor(int color) {
+            this.color = color;
+        }
+
+        public void setBehavior(int behavior) {
+            this.behavior = behavior;
+        }
+    }
+
+    public class Shape {
+        public int x, y;
+        public BoardCell[][] mat = new BoardCell[5][5];
+        public boolean canRotate;
+
+        Shape() {
+            for (int i = 0; i < 5; ++i) {
+                for (int j = 0; j < 5; ++j) {
+                    mat[i][j] = new BoardCell();
+                }
+            }
+            x = y = 0;
+            canRotate = true;
+        }
+
+        Shape(int[][] _mat, int _color) {
+            for (int i = 0; i < 5; ++i) {
+                for (int j = 0; j < 5; ++j) {
+                    if (_mat[i][j] == 1) {
+                        mat[i][j] = new BoardCell(_mat[i][j], _color);
+                    } else {
+                        mat[i][j] = new BoardCell();
+                    }
+                }
+            }
+            x = y = 0;
+            canRotate = true;
+        }
+
+        Shape(int[][] _mat, int _color, final int behavior) {
+            for (int i = 0; i < 5; ++i) {
+                for (int j = 0; j < 5; ++j) {
+                    if (_mat[i][j] == 1)
+                        mat[i][j] = new BoardCell(_mat[i][j], _color, behavior);
+                    else
+                        mat[i][j] = new BoardCell();
+
+                }
+            }
+            canRotate = true;
+        }
+
+        Shape(int[][] _mat, int _color, final int behavior, boolean _canRotate) {
+            for (int i = 0; i < 5; ++i) {
+                for (int j = 0; j < 5; ++j) {
+                    if (_mat[i][j] == 1)
+                        mat[i][j] = new BoardCell(_mat[i][j], _color, behavior);
+                    else
+                        mat[i][j] = new BoardCell();
+
+                }
+            }
+            canRotate = _canRotate;
+        }
+
+        Shape(int[][] _mat, int _color, int _x, int _y) {
+            for (int i = 0; i < 5; ++i) {
+                for (int j = 0; j < 5; ++j) {
+                    if (_mat[i][j] == 1) {
+                        mat[i][j] = new BoardCell(_mat[i][j], _color);
+                    } else {
+                        mat[i][j] = new BoardCell();
+                    }
+                }
+            }
+            x = _x;
+            y = _y;
+            canRotate = true;
+        }
+
+
+        void RotateLeft() {
+            if (!this.canRotate) {
+                return;
+            }
+
+            BoardCell[][] aux = new BoardCell[5][5];
+            for (int i = 1; i < 5; ++i) {
+                for (int j = 1; j < 5; ++j) {
+                    aux[4 - j + 1][i] = mat[i][j];
+                }
+            }
+            for (int i = 1; i < 5; ++i) {
+                for (int j = 1; j < 5; ++j) {
+                    mat[i][j] = aux[i][j];
+                }
+            }
+        }
+
+        void RotateRight() {
+            if (!this.canRotate) {
+                return;
+            }
+
+            BoardCell[][] aux = new BoardCell[5][5];
+            for (int i = 1; i < 5; ++i) {
+                for (int j = 1; j < 5; ++j) {
+                    aux[j][4 - i + 1] = mat[i][j];
+                }
+            }
+            for (int i = 1; i < 5; ++i) {
+                for (int j = 1; j < 5; ++j) {
+                    mat[i][j] = aux[i][j];
+                }
+            }
+        }
+    }
 
 }
