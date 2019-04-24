@@ -154,5 +154,50 @@ public class GameActivity {
         for (int i = 1; i <= 4; ++i) for (int j = 1; j <= 4; ++j) a[i][j] = 0;
     }
 
+    private void CopyMatrix(BoardCell[][] A, BoardCell[][] B) {
+        for (int i = 0; i < NUM_ROWS; ++i) {
+            for (int j = 0; j < NUM_COLUMNS; ++j) {
+                B[i][j] = new BoardCell(A[i][j].getState(), A[i][j].getColor(), A[i][j].getBehavior());
+            }
+        }
+    }
 
+    private void FixGameMatrix() {
+        for (int i = 3; i < NUM_ROWS - 3; ++i) {
+            for (int j = 3; j < NUM_COLUMNS - 3; ++j) {
+                if (gameMatrix[i][j].getState() == 0) {
+                    gameMatrix[i][j].setColor(Color.BLACK);
+                    gameMatrix[i][j].setBehavior(BoardCell.BEHAVIOR_NOTHING);
+                    continue;
+                }
+                if (gameMatrix[i][j].getBehavior() == BoardCell.BEHAVIOR_IS_FIXED)
+                    continue;
+                if (gameMatrix[i][j].getBehavior() == BoardCell.BEHAVIOR_IS_FALLING) {
+                    int ind, jnd, ii, jj;
+                    for (ind = 1, ii = currentShape.x; ind <= 4; ++ind, ++ii) {
+                        for (jnd = 1, jj = currentShape.y; jnd <= 4; ++jnd, ++jj) {
+                            if (ii == i && jj == j) {
+                                if (currentShape.mat[ind][jnd].getState() == 0) {
+                                    gameMatrix[i][j] = new BoardCell();
+                                }
+                            }
+                        }
+                    }
+                    continue;
+                }
+                if (gameMatrix[i][j].getBehavior() == BoardCell.BEHAVIOR_NOTHING) {
+                    int ind, jnd, ii, jj;
+                    for (ind = 1, ii = currentShape.x; ind <= 4; ++ind, ++ii) {
+                        for (jnd = 1, jj = currentShape.y; jnd <= 4; ++jnd, ++jj) {
+                            if (ii == i && jj == j) {
+                                if (currentShape.mat[ind][jnd].getState() == 1) {
+                                    gameMatrix[i][j] = currentShape.mat[ind][jnd];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
