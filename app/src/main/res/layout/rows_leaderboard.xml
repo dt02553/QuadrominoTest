@@ -15,6 +15,7 @@
         android:layout_gravity="center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
         />
 
     <TextView android:id="@+id/NAME_CELL"
@@ -22,14 +23,15 @@
         android:gravity="start"
         android:layout_weight="70"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"/>
 
     <TextView android:id="@+id/SCORE_CELL"
         android:textSize="17sp"
         android:gravity="end"
         android:layout_gravity="center"
         android:layout_weight="20"
-
+        android:textColor="#ffffff"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 </LinearLayout>
