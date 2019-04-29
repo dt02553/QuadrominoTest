@@ -12,7 +12,7 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int backgroundColor = Color.parseColor("#c0c0c0");
+        int backgroundColor = Color.parseColor("#FFFFFF");
         View view = this.getWindow().getDecorView();
         view.setBackgroundColor(backgroundColor);
         addPreferencesFromResource(R.xml.preferences);

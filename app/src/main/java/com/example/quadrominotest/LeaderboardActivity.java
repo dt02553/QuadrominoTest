@@ -72,13 +72,6 @@ public class LeaderboardActivity extends Activity {
         setContentView(R.layout.activity_leaderboard);
 
         list = (ListView) findViewById(R.id.listView_leaderboard);
-        Button setPropertiesButton = (Button) findViewById(R.id.set_properties_leaderboard_button);
-        setPropertiesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LeaderboardActivity.this.startActivity(new Intent(LeaderboardActivity.this, LeaderboardSettingsActivity.class));
-            }
-        });
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (SaveSettings.saveSettingsLeaderboard == 0) {

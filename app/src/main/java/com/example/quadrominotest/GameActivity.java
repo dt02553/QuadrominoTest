@@ -402,14 +402,13 @@ public class GameActivity extends Activity implements GestureDetector.OnGestureL
         paint.setColor(Color.BLACK);
         canvas.drawRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT, paint);
 
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.GRAY);
         for (int i = 0; i <= (NUM_ROWS - 6); ++i) {
             canvas.drawLine(0, i * (BOARD_HEIGHT / (NUM_ROWS - 6)), BOARD_WIDTH,
                     i * (BOARD_HEIGHT / (NUM_ROWS - 6)), paint);
         }
         for (int i = 0; i <= (NUM_COLUMNS - 6); ++i) {
-            canvas.drawLine(i * (BOARD_WIDTH / (NUM_COLUMNS - 6)), 0,
-                    i * (BOARD_WIDTH / (NUM_COLUMNS - 6)), BOARD_HEIGHT, paint);
+            canvas.drawLine(i * (BOARD_WIDTH / (NUM_COLUMNS - 6)), 0, i * (BOARD_WIDTH / (NUM_COLUMNS - 6)), BOARD_HEIGHT, paint);
         }
 
         for (int i = 3; i < NUM_ROWS - 3; ++i) {

@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="Amazing Tetris"
+            android:label="Quadromino Storm"
             android:parentActivityName=".MainActivity"
             android:configChanges="orientation">
             <meta-data
@@ -38,15 +38,6 @@
                 android:value="com.example.quadrominotest.MainActivity" />
         </activity>
 
-        <activity
-            android:name=".LeaderboardSettingsActivity"
-            android:label="Quadromino Storm"
-            android:parentActivityName=".LeaderboardActivity"
-            android:configChanges="orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.quadrominotest.MainActivity" />
-        </activity>
         <activity
             android:name=".LeaderboardActivity"
             android:label="@string/app_name"

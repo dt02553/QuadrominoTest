@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff72abff"
+    android:background="@drawable/quadromino_back"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".InfoActivity">
@@ -16,26 +16,30 @@
             android:id="@+id/instructions_textiview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
-            android:text="@string/instructions_string" />
+            android:text="@string/instructions_string"
+            android:textSize="35sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="60">
+        android:layout_weight="45">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="367dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="364dp"
+
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -48,130 +52,154 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/gesture1_string" />
+                        android:text="@string/gesture1_string"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/gesture2_string" />
+                        android:text="@string/gesture2_string"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/gesture3_string" />
+                        android:text="@string/gesture3_string"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/gesture4_string" />
+                        android:text="@string/gesture4_string"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/gesture5_string" />
+                        android:text="@string/gesture5_string"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="@string/gesture6_string" />
+                        android:text="@string/gesture6_string"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="364dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="@string/gestureeffect1_string" />
+                    android:text="@string/gestureeffect1_string"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="@string/gestureeffect2_string" />
+                    android:text="@string/gestureeffect2_string"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="@string/gestureeffect3_string" />
+                    android:text="@string/gestureeffect3_string"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="@string/gestureeffect4_string" />
+                    android:text="@string/gestureeffect4_string"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="@string/gestureeffect5_string" />
+                    android:text="@string/gestureeffect5_string"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="@string/gestureeffect6_string" />
+                    android:text="@string/gestureeffect6_string"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -180,7 +208,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="40">
+        android:layout_alignParentStart="true"
+        android:layout_weight="55">
 
         <TextView
             android:id="@+id/developer_textview"
@@ -189,7 +218,10 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="@string/developers_string"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textSize="40sp"/>
 
         <TextView
             android:id="@+id/developer1_textview"
@@ -199,11 +231,12 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="118dp"
-            android:layout_marginLeft="118dp"
-            android:layout_marginTop="-2dp"
+            android:layout_marginStart="149dp"
+            android:layout_marginLeft="149dp"
+            android:layout_marginTop="2dp"
             android:text="@string/developer1_string"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/developer2_textview"
@@ -212,11 +245,26 @@
             android:layout_below="@+id/developer1_textview"
             android:layout_alignStart="@+id/developer1_textview"
             android:layout_alignLeft="@+id/developer1_textview"
-            android:layout_marginStart="-23dp"
-            android:layout_marginLeft="-23dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="30dp"
             android:text="@string/developer2_string"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/developer3_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/developer1_textview"
+            android:layout_alignStart="@+id/developer1_textview"
+            android:layout_alignLeft="@+id/developer1_textview"
+            android:layout_marginStart="-9dp"
+            android:layout_marginLeft="-9dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/developer3_string"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textColor="#ffffff">
     <ListPreference
         android:key="difficulty_preference"
         android:title="Set difficulty"
         android:entries="@array/difficulty_preference_entries"
         android:entryValues="@array/difficulty_preference_entryValues"
         android:defaultValue="Normal"
+        android:textColor="#ffffff"
+        android:background="#ffffff"
         />
 
     <ListPreference
@@ -14,6 +17,7 @@
         android:entries="@array/num_rows_preference_entries"
         android:entryValues="@array/num_rows_preference_entryValues"
         android:defaultValue="10"
+        android:textColor="#ffffff"
         />
 
     <ListPreference
@@ -22,6 +26,7 @@
         android:entries="@array/num_columns_preference_entries"
         android:entryValues="@array/num_columns_preference_entryValues"
         android:defaultValue="20"
+        android:textColor="#ffffff"
         />
 
     <ListPreference
@@ -30,6 +35,7 @@
         android:entries="@array/speed_preference_entries"
         android:entryValues="@array/speed_preference_entryValues"
         android:defaultValue="Normal"
+        android:textColor="#ffffff"
         />
 
 </PreferenceScreen>

@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".GameActivity"
-    android:background="#ff72abff">
+    android:background="#88888888">
 
     <LinearLayout
         android:orientation="vertical"
@@ -28,7 +28,8 @@
         android:textIsSelectable="false"
         android:clickable="false"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +38,8 @@
         android:text="@string/game_over_textview_string"
         android:id="@+id/game_over_textview"
         android:textAlignment="center"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:textColor="#ffffffff"
         android:longClickable="false"
         android:clickable="false"
@@ -52,7 +54,8 @@
         android:text="@string/game_over_textview_string2"
         android:id="@+id/game_over_textview2"
         android:textAlignment="center"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:textColor="#ffffffff"
         android:longClickable="false"
         android:clickable="false"
@@ -60,5 +63,5 @@
         android:layout_below="@+id/game_over_textview"
         android:textSize="30sp"
         android:background="#ff2b2b2b"
-        android:autoText="true" />
+         />
 </RelativeLayout>
